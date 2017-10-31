@@ -6,15 +6,21 @@
 
 <p id="demo"></p>
 
+<p id="demo2"></p>
+
+
 <script>
 
-var xmlhttp = new XMLHttpRequest();
+let xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        var myObj = JSON.parse(this.responseText);
+        let myObj = JSON.parse(this.responseText);
 
-let myJSON = JSON.stringify(myObj);
-        document.getElementById("demo").innerHTML = myObj.squadName;
+let myJSON = JSON.stringify(myObj.members);
+        document.getElementById("demo").innerHTML = myObj.squadName +"<br>"+myObj.homeTown
+        +"<br>"+ myObj.formed+ "<br>"+ myObj.secretBase+ "<br>"+myObj.active+"<br>";
+
+        document.getElementById("demo2").innerHTML=myJSON;
     }
 };
 xmlhttp.open("GET", "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json", true);
