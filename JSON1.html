@@ -14,7 +14,7 @@ xmlhttp.onreadystatechange = function() {
         var myObj = JSON.parse(this.responseText);
 
 let myJSON = JSON.stringify(myObj);
-        document.getElementById("demo").innerHTML = myJSON;
+        document.getElementById("demo").innerHTML = myObj.squadName;
     }
 };
 xmlhttp.open("GET", "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json", true);
