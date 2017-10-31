@@ -31,7 +31,7 @@ xmlhttp.onreadystatechange = function() {
             memberHse = member.hse;
             memberYrs = member.yrs;
             arrayCopy.push(memberNm);
-            arrayInfo.push(memberNm + "<br>"+ memberCty+"<br>"+memberHse+"<br>"+memberYrs);
+            arrayInfo.push(memberNm + ", "+ memberCty+", "+memberHse+", "+memberYrs);
             // document.getElementById("demo").innerHTML += member.nm + "<br>";
             // document.getElementById("demo").innerHTML +=arrayCopy;
             console.log(arrayCopy);
@@ -41,12 +41,17 @@ xmlhttp.onreadystatechange = function() {
 xmlhttp.open("GET", "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json", true);
 xmlhttp.send();
 
+
 function search(nameKey, myArray, myArray2){
     for (let i = 0; i < myArray.length; i++){
         
-        if(myArray[i] === nameKey){
-            
-            document.getElementById("demo").innerHTML=arrayInfo[i];
+        if(myArray[i].includes(nameKey)){
+            console.log(arrayInfo[i]);
+            let x = document.createElement("div");
+            let linebreak = document.createElement("br")
+            x.textContent = arrayInfo[i]; 
+            document.body.appendChild(x, linebreak);
+            // document.write("<p>"+arrayInfo[i]+"</p>");
         }
     }
 }
