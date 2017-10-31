@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<body>
-    
+<body>  
     <input type="text" id="text" value="Search">
 
     <button onclick="getUser()">Search</button>
@@ -48,10 +47,11 @@ function search(nameKey, myArray, myArray2){
         if(myArray[i].includes(nameKey)){
             console.log(arrayInfo[i]);
             let x = document.createElement("div");
+            x.setAttribute("id", "div1");
             let linebreak = document.createElement("br")
             x.textContent = arrayInfo[i]; 
-            document.body.appendChild(x, linebreak);
-            // document.write("<p>"+arrayInfo[i]+"</p>");
+            document.body.appendChild(x, linebreak, linebreak);
+            
         }
     }
 }
