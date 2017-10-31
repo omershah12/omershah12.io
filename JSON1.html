@@ -8,6 +8,8 @@
 
 <p id="demo2"></p>
 
+<pre id="log"></pre>
+
 
 <script>
 
@@ -16,11 +18,20 @@ xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         let myObj = JSON.parse(this.responseText);
 
-let myJSON = JSON.stringify(myObj.members);
+        for(let i = 0; i < myObj.members.length; i++){
+            let member = myObj.members[i];
+            let myJSONName = JSON.stringify(member.name);
+            let myJSONAge = JSON.stringify(member.age);
+            console.log(member.name, member.age);
+            document.getElementById("demo2").innerHTML += member.name+", "+member.age+", "
+            +member.secretIdentity+"<br>"+member.powers+"<br><br>";
+        }
+
         document.getElementById("demo").innerHTML = myObj.squadName +"<br>"+myObj.homeTown
         +"<br>"+ myObj.formed+ "<br>"+ myObj.secretBase+ "<br>"+myObj.active+"<br>";
 
-        document.getElementById("demo2").innerHTML=myJSON;
+        // document.getElementById("demo2").innerHTML= myJSON;
+        
     }
 };
 xmlhttp.open("GET", "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json", true);
