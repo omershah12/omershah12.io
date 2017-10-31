@@ -25,11 +25,13 @@ xmlhttp.onreadystatechange = function() {
             let memberNm = {};
             let memberCty = {};
             let memberHse = {};
+            let membersYrs = {};
             memberNm = member.nm;
             memberCty = member.cty;
             memberHse = member.hse;
+            memberYrs = member.yrs;
             arrayCopy.push(memberNm);
-            arrayInfo.push(memberNm + ","+ memberCty+","+memberHse);
+            arrayInfo.push(memberNm + "<br>"+ memberCty+"<br>"+memberHse+"<br>"+memberYrs);
             // document.getElementById("demo").innerHTML += member.nm + "<br>";
             // document.getElementById("demo").innerHTML +=arrayCopy;
             console.log(arrayCopy);
@@ -41,11 +43,9 @@ xmlhttp.send();
 
 function search(nameKey, myArray, myArray2){
     for (let i = 0; i < myArray.length; i++){
+        
         if(myArray[i] === nameKey){
-            document.getElementById("demo").innerHTML=arrayInfo[i];
-        }
-
-        if(arrayInfo[i].split(",") === nameKey){
+            
             document.getElementById("demo").innerHTML=arrayInfo[i];
         }
     }
