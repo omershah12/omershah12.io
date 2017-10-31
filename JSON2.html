@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <p id="demo"></p>
+    
+    <input type="text" id="text" value="Search">
+
+    <button onclick="getUser()">Search</button>
+
+<script type="text/javascript">
+
+let xmlhttp = new XMLHttpRequest();
+let arrayCopy=[];
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        let myObj = JSON.parse(this.responseText);
+
+        for(let i = 0; i < myObj.length; i++){
+            let member = myObj[i];
+            let memberNm = {};
+            memberNm = member.nm;
+            arrayCopy.push(memberNm);
+            // document.getElementById("demo").innerHTML += member.nm + "<br>";
+            // document.getElementById("demo").innerHTML +=arrayCopy;
+            console.log(arrayCopy);
+        }
+    }
+};
+xmlhttp.open("GET", "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json", true);
+xmlhttp.send();
+
+function search(nameKey, myArray){
+    for (let i = 0; i < myArray.length; i++){
+        if(myArray[i] === nameKey){
+            window.alert("found");
+        }
+    }
+}
+
+function getUser(){
+    let x = document.getElementById("text").value;
+    let result = search(x, arrayCopy);
+}
+
+</script>
+
+</body>
+
+</html>
