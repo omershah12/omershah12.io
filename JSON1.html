@@ -8,9 +8,6 @@
 
 <p id="demo2"></p>
 
-<pre id="log"></pre>
-
-
 <script>
 
 let xmlhttp = new XMLHttpRequest();
@@ -22,12 +19,12 @@ xmlhttp.onreadystatechange = function() {
             let member = myObj.members[i];
             let myJSONName = JSON.stringify(member.name);
             let myJSONAge = JSON.stringify(member.age);
-            console.log(member.name, member.age);
+            console.log(member.name, member.age, member.secretIdentity, member.powers);
             document.getElementById("demo2").innerHTML += member.name+", "+member.age+", "
             +member.secretIdentity+"<br>"+member.powers+"<br><br>";
         }
 
-        document.getElementById("demo").innerHTML = myObj.squadName +"<br>"+myObj.homeTown
+        document.getElementById("demo").innerHTML += myObj.squadName +"<br>"+myObj.homeTown
         +"<br>"+ myObj.formed+ "<br>"+ myObj.secretBase+ "<br>"+myObj.active+"<br>";
 
         // document.getElementById("demo2").innerHTML= myJSON;
