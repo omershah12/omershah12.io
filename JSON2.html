@@ -14,14 +14,16 @@
     <p id="demo"></p>
 
     <script type="text/javascript">
+
         let xmlhttp = new XMLHttpRequest();
         let arrayCopy = [];
-
         let arrayInfo = [];
+
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                let myObj = JSON.parse(this.responseText);
 
+                let myObj = JSON.parse(this.responseText);
+                
                 for (let i = 0; i < myObj.length; i++) {
                     let member = myObj[i];
                     let memberNm = {};
@@ -42,7 +44,6 @@
         console.log(arrayCopy);
         xmlhttp.open("GET", "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json", true);
         xmlhttp.send();
-
 
         function search(nameKey, myArray, myArray2) {
             for (let i = 0; i < myArray.length; i++) {
