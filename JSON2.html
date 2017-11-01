@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
-
-<body>  
+<head>
+</head>
+<body>
     <input type="text" id="text" placeholder="Search">
 
     <button onclick="getUser()">Search</button>
@@ -9,59 +10,58 @@
 
     <p id="demo"></p>
 
-<script type="text/javascript">
+    <script type="text/javascript">
+        let xmlhttp = new XMLHttpRequest();
+        let arrayCopy = [];
 
-let xmlhttp = new XMLHttpRequest();
-let arrayCopy=[];
+        let arrayInfo = [];
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let myObj = JSON.parse(this.responseText);
 
-let arrayInfo=[];
-xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        let myObj = JSON.parse(this.responseText);
+                for (let i = 0; i < myObj.length; i++) {
+                    let member = myObj[i];
+                    let memberNm = {};
+                    let memberCty = {};
+                    let memberHse = {};
+                    let membersYrs = {};
+                    memberNm = member.nm;
+                    memberCty = member.cty;
+                    memberHse = member.hse;
+                    memberYrs = member.yrs;
+                    arrayCopy.push(memberNm);
+                    arrayInfo.push(memberNm + ", " + memberCty + ", " + memberHse + ", " + memberYrs);
+                    // document.getElementById("demo").innerHTML += member.nm + "<br>";
+                    // document.getElementById("demo").innerHTML +=arrayCopy;
+                }
+            }
+        };
+        console.log(arrayCopy);
+        xmlhttp.open("GET", "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json", true);
+        xmlhttp.send();
 
-        for(let i = 0; i < myObj.length; i++){
-            let member = myObj[i];
-            let memberNm = {};
-            let memberCty = {};
-            let memberHse = {};
-            let membersYrs = {};
-            memberNm = member.nm;
-            memberCty = member.cty;
-            memberHse = member.hse;
-            memberYrs = member.yrs;
-            arrayCopy.push(memberNm);
-            arrayInfo.push(memberNm + ", "+ memberCty+", "+memberHse+", "+memberYrs);
-            // document.getElementById("demo").innerHTML += member.nm + "<br>";
-            // document.getElementById("demo").innerHTML +=arrayCopy;
+
+        function search(nameKey, myArray, myArray2) {
+            for (let i = 0; i < myArray.length; i++) {
+
+                if (myArray[i].includes(nameKey)) {
+                    console.log(arrayInfo[i]);
+                    let x = document.createElement("div");
+                    x.setAttribute("id", "div1");
+                    let linebreak = document.createElement("br")
+                    x.textContent = arrayInfo[i];
+                    document.body.appendChild(x, linebreak, linebreak);
+
+                }
+            }
         }
-    }
-};
-console.log(arrayCopy);
-xmlhttp.open("GET", "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json", true);
-xmlhttp.send();
 
-
-function search(nameKey, myArray, myArray2){
-    for (let i = 0; i < myArray.length; i++){
-        
-        if(myArray[i].includes(nameKey)){
-            console.log(arrayInfo[i]);
-            let x = document.createElement("div");
-            x.setAttribute("id", "div1");
-            let linebreak = document.createElement("br")
-            x.textContent = arrayInfo[i]; 
-            document.body.appendChild(x, linebreak, linebreak);
-            
+        function getUser() {
+            let x = document.getElementById("text").value;
+            let result = search(x, arrayCopy, arrayInfo);
         }
-    }
-}
 
-function getUser(){
-    let x = document.getElementById("text").value;
-    let result = search(x, arrayCopy, arrayInfo);
-}
-
-</script>
+    </script>
 
 </body>
 
