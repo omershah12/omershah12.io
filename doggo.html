@@ -1,0 +1,50 @@
+<html>
+
+<head>
+</head>
+
+<body>
+
+    <input type="text" id="size" placeholder="Enter number of doggos">
+    <input type="button" onclick="doggoArray()" value="submit">
+    <br><br>
+    <input type="text" id="input" placeholder="Your doggo's place">
+    <input type="button" onclick="userIn()" value="submit">
+
+    <script type="text/javascript">
+        function doggoArray() {
+            dogs = [];
+            let doggo = document.getElementById("size").value;
+            for (let i = 1; i <= doggo; i++) {
+                let n = i;
+                let lastDigit = n.toString().split('').pop();
+                if (n === 11 || n === 12 || n === 13) {
+                    n = n + "th";
+                }
+                else if (lastDigit === "1") {
+                    n = n + "st";
+                }
+                else if (lastDigit === "2") {
+                    n = n + "nd";
+                }
+                else if (lastDigit === "3") {
+                    n = n + "rd";
+                }
+                else {
+                    n = n + "th";
+                }
+                dogs.push(n);
+            }
+        }
+        function userIn() {
+            let userInput = parseInt(document.getElementById("input").value);
+            if (userInput) {
+                dogs.splice((userInput - 1), 1);
+                console.log(dogs);
+            }
+        }
+</script>
+
+</body>
+
+</html>
