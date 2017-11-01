@@ -2,7 +2,7 @@
 <html>
 
 <body>  
-    <input type="text" id="text" value="Search">
+    <input type="text" id="text" placeholder="Search">
 
     <button onclick="getUser()">Search</button>
     <br>
@@ -33,10 +33,10 @@ xmlhttp.onreadystatechange = function() {
             arrayInfo.push(memberNm + ", "+ memberCty+", "+memberHse+", "+memberYrs);
             // document.getElementById("demo").innerHTML += member.nm + "<br>";
             // document.getElementById("demo").innerHTML +=arrayCopy;
-            console.log(arrayCopy);
         }
     }
 };
+console.log(arrayCopy);
 xmlhttp.open("GET", "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json", true);
 xmlhttp.send();
 
