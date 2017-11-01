@@ -23,7 +23,7 @@
             if (this.readyState == 4 && this.status == 200) {
 
                 let myObj = JSON.parse(this.responseText);
-                
+
                 for (let i = 0; i < myObj.length; i++) {
                     let member = myObj[i];
                     let memberNm = {};
@@ -55,7 +55,6 @@
                     let linebreak = document.createElement("br")
                     x.textContent = arrayInfo[i];
                     document.body.appendChild(x, linebreak, linebreak);
-
                 }
             }
         }
