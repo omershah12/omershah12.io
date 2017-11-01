@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <body>
 
-<h2>JSON Parse.</h2>
+    <h2>JSON Parse.</h2>
 
-<p id="demo"></p>
+    <p id="demo"></p>
 
-<p id="demo2"></p>
+    <p id="demo2"></p>
 
-<script>
+    <script>
+        let xmlhttp = new XMLHttpRequest();
+        
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let myObj = JSON.parse(this.responseText);
 
-let xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        let myObj = JSON.parse(this.responseText);
-
-        for(let i = 0; i < myObj.members.length; i++){
-            let member = myObj.members[i];
-            console.log(member.name, member.age, member.secretIdentity, member.powers);
-            document.getElementById("demo2").innerHTML += member.name+", "+member.age+", "
-            +member.secretIdentity+"<br>"+member.powers+"<br><br>";
-        }
-
-        document.getElementById("demo").innerHTML += myObj.squadName +"<br>"+myObj.homeTown
-        +"<br>"+ myObj.formed+ "<br>"+ myObj.secretBase+ "<br>"+myObj.active+"<br>";
-    }
-};
-xmlhttp.open("GET", "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json", true);
-xmlhttp.send();
-
-</script>
+                for (let i = 0; i < myObj.members.length; i++) {
+                    let member = myObj.members[i];
+                    console.log(member.name, member.age, member.secretIdentity, member.powers);
+                    document.getElementById("demo2").innerHTML += member.name + ", " + member.age + ", "
+                        + member.secretIdentity + "<br>" + member.powers + "<br><br>";
+                }
+                document.getElementById("demo").innerHTML += myObj.squadName + "<br>" + myObj.homeTown
+                    + "<br>" + myObj.formed + "<br>" + myObj.secretBase + "<br>" + myObj.active + "<br>";
+            }
+        };
+        xmlhttp.open("GET", "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json", true);
+        xmlhttp.send();
+    </script>
 
 </body>
+
 </html>
