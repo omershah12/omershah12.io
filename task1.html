@@ -1,0 +1,86 @@
+<html>
+<head>
+</head>
+<body>
+    <script type="text/javascript">
+        function task1(x){
+            let double = "";
+            for(i = 0; i < x.length; i++){
+                double += x[i] + x[i];
+            }
+            return double;
+        }
+
+        //NOT WORKING
+        // function task2(x){
+        //     let y = "";
+        //     if(x.indexOf("bread")===0){
+        //         y = subString(0, "bread".length);
+        //         return "Found Bread";
+        //     }else{
+        //         return "No bread";
+        //     }
+        // }
+
+        function task3(a,b,c){
+            let min=0;
+            let med=0;
+            let max=0;
+            if(a > b && a > c){
+                max = a;
+            }else if(b > a && b > c){
+                max = b;
+            }else if(c > b && c > a){
+                max=c;
+            }
+
+            if(a < b && a < c){
+                min = a;
+            }else if(b < a && b < c){
+                min = b;
+            }else if(c < b && c < a){
+                min=c;
+            }
+
+            //NOT WORKING
+            // if(a < b && a >c){
+            //     med = a;
+            // }else if(b < a && b > c){
+            //     med = b;
+            // }else if(c < b && c > a){
+            //     med=c;
+            // }
+
+            console.log(min,med,max);
+
+            if(max-med === med-min){
+                return true;
+            }else{
+                return false;
+            }
+
+        }
+
+        function task4(x, n){
+
+            let y= x.substring(0, n);
+
+            let z = x.substring(x.length-n, ((x.length-n)+n));
+
+            console.log(x.length-n);
+
+            return y + z;
+
+        }
+
+        console.log(task4("Hello", 2));
+        // console.log(task3(4,2,6));
+        // console.log(task2("breadJambread"))
+        // console.log(task1("The"));
+        // console.log(task1("AAbb"));
+        // console.log(task1("Hi-There"));
+</script>
+
+</body>
+
+</html>
